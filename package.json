@@ -4,7 +4,7 @@
   "private": true,
   "description": "TransitOps — Smart Transport Operations Platform",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "db:push": "prisma db push",
