@@ -2,14 +2,52 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* ─── Brand palette ─── */
 :root {
-  --background: #f4f5f7;
-  --foreground: #18181b;
+  --background: #eef0f4;
+  --foreground: #14161e;
+  --surface: #ffffff;
+  --surface-2: #f5f6f9;
+  --border: #e7e9ef;
+  --border-subtle: #f0f1f5;
+  --text-primary: #14161e;
+  --text-secondary: #6b7280;
+  --text-muted: #9aa1ac;
+  --brand-50: #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-200: #c7d2fe;
+  --brand-400: #818cf8;
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --brand-700: #4338ca;
+  --shadow-color: 220 15% 60%;
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06), 0 1px 3px hsl(var(--shadow-color) / 0.1);
+  --shadow-md: 0 4px 6px hsl(var(--shadow-color) / 0.07), 0 2px 4px hsl(var(--shadow-color) / 0.06);
+  --shadow-lg: 0 10px 15px -3px hsl(var(--shadow-color) / 0.08), 0 4px 6px -4px hsl(var(--shadow-color) / 0.06);
+  --shadow-xl: 0 20px 25px -5px hsl(var(--shadow-color) / 0.1), 0 8px 10px -6px hsl(var(--shadow-color) / 0.08);
 }
 
 .dark {
-  --background: #0b0e14;
-  --foreground: #e4e4e7;
+  --background: #0a0c12;
+  --foreground: #e8eaf0;
+  --surface: #12151d;
+  --surface-2: #161b26;
+  --border: #20263a;
+  --border-subtle: #1c2130;
+  --text-primary: #e8eaf0;
+  --text-secondary: #98a0b0;
+  --text-muted: #69707e;
+  --brand-50: #1e1b4b;
+  --brand-100: #252262;
+  --brand-400: #818cf8;
+  --brand-500: #6366f1;
+  --brand-600: #818cf8;
+  --brand-700: #a5b4fc;
+  --shadow-color: 230 50% 5%;
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.3), 0 1px 3px hsl(var(--shadow-color) / 0.2);
+  --shadow-md: 0 4px 6px hsl(var(--shadow-color) / 0.3), 0 2px 4px hsl(var(--shadow-color) / 0.2);
+  --shadow-lg: 0 10px 15px -3px hsl(var(--shadow-color) / 0.3), 0 4px 6px -4px hsl(var(--shadow-color) / 0.2);
+  --shadow-xl: 0 20px 25px -5px hsl(var(--shadow-color) / 0.4), 0 8px 10px -6px hsl(var(--shadow-color) / 0.3);
 }
 
 html {
@@ -19,11 +57,112 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Consistent focus ring */
+/* ─── Consistent focus ring ─── */
 :focus-visible {
-  outline: 2px solid #6366f1;
-  outline-offset: 1px;
+  outline: 2px solid var(--brand-500);
+  outline-offset: 2px;
+}
+
+/* ─── Smooth scrollbars ─── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(220 10% 70% / 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(220 10% 60% / 0.5);
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(230 20% 35% / 0.4);
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(230 20% 45% / 0.5);
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.35s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Stagger animation delays for KPI cards */
+.stagger-1 { animation-delay: 0.05s; animation-fill-mode: backwards; }
+.stagger-2 { animation-delay: 0.1s; animation-fill-mode: backwards; }
+.stagger-3 { animation-delay: 0.15s; animation-fill-mode: backwards; }
+.stagger-4 { animation-delay: 0.2s; animation-fill-mode: backwards; }
+.stagger-5 { animation-delay: 0.25s; animation-fill-mode: backwards; }
+.stagger-6 { animation-delay: 0.3s; animation-fill-mode: backwards; }
+.stagger-7 { animation-delay: 0.35s; animation-fill-mode: backwards; }
+
+/* ─── Table improvements ─── */
+thead th {
+  letter-spacing: 0.04em;
+}
+
+/* ─── Display font (Space Grotesk) for headings & big numerals ─── */
+.font-display {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+h1, h2, h3 {
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.015em;
+}
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Selection color ─── */
+::selection {
+  background: hsl(239 84% 67% / 0.2);
+}
+.dark ::selection {
+  background: hsl(239 84% 67% / 0.3);
 }

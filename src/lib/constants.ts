@@ -40,20 +40,32 @@ export const STATUS_LABELS: Record<string, string> = {
   OTHER: "Other",
 };
 
-/** Tailwind classes per status badge — single source of truth for the whole UI. */
+/**
+ * Tailwind classes per status badge — single source of truth for the whole UI.
+ * Tones from the TransitOps Redesign design doc:
+ * green #e7f6ee/#1f8a5b · blue #e8f0fe/#2a6fdb · amber #fdf1dd/#a9701a · red #fdeaea/#c33636
+ */
+const TONE = {
+  green: "bg-[#e7f6ee] text-[#1f8a5b] dark:bg-[#22965e29] dark:text-[#4cd08a]",
+  blue: "bg-[#e8f0fe] text-[#2a6fdb] dark:bg-[#2a6fdb2e] dark:text-[#6ea8ff]",
+  amber: "bg-[#fdf1dd] text-[#a9701a] dark:bg-[#a9701a33] dark:text-[#e3b465]",
+  red: "bg-[#fdeaea] text-[#c33636] dark:bg-[#c83c3c29] dark:text-[#f38b8b]",
+  gray: "bg-zinc-100 text-zinc-500 dark:bg-[#161b26] dark:text-[#98a0b0]",
+};
+
 export const STATUS_BADGE: Record<string, string> = {
-  AVAILABLE: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
-  ON_TRIP: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
-  IN_SHOP: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
-  RETIRED: "bg-zinc-200 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-300",
-  OFF_DUTY: "bg-zinc-200 text-zinc-600 dark:bg-zinc-700 dark:text-zinc-300",
-  SUSPENDED: "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300",
-  DRAFT: "bg-zinc-200 text-zinc-700 dark:bg-zinc-700 dark:text-zinc-200",
-  DISPATCHED: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
-  COMPLETED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
-  CANCELLED: "bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300",
-  OPEN: "bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300",
-  CLOSED: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
+  AVAILABLE: TONE.green,
+  ON_TRIP: TONE.blue,
+  IN_SHOP: TONE.amber,
+  RETIRED: TONE.gray,
+  OFF_DUTY: TONE.gray,
+  SUSPENDED: TONE.red,
+  DRAFT: TONE.amber,
+  DISPATCHED: TONE.blue,
+  COMPLETED: TONE.green,
+  CANCELLED: TONE.red,
+  OPEN: TONE.amber,
+  CLOSED: TONE.green,
 };
 
 export const fmtMoney = (n: number) =>
