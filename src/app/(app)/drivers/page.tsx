@@ -17,8 +17,8 @@ export default async function DriversPage({ searchParams }: { searchParams: SP }
   const where: Record<string, unknown> = {};
   if (sp.status) where.status = sp.status;
   if (sp.q) where.OR = [
-    { name: { contains: sp.q, mode: "insensitive" } },
-    { licenseNo: { contains: sp.q, mode: "insensitive" } },
+    { name: { contains: sp.q } },
+    { licenseNo: { contains: sp.q } },
   ];
 
   const drivers = await prisma.driver.findMany({

@@ -17,8 +17,8 @@ export default async function VehiclesPage({ searchParams }: { searchParams: SP 
   if (sp.type) where.type = sp.type;
   if (sp.status) where.status = sp.status;
   if (sp.q) where.OR = [
-    { regNo: { contains: sp.q, mode: "insensitive" } },
-    { name: { contains: sp.q, mode: "insensitive" } },
+    { regNo: { contains: sp.q } },
+    { name: { contains: sp.q } },
   ];
 
   const vehicles = await prisma.vehicle.findMany({

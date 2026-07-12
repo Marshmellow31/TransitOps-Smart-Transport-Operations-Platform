@@ -16,8 +16,8 @@ export default async function TripsPage({ searchParams }: { searchParams: SP }) 
   const where: Record<string, unknown> = {};
   if (sp.status) where.status = sp.status;
   if (sp.q) where.OR = [
-    { source: { contains: sp.q, mode: "insensitive" } },
-    { destination: { contains: sp.q, mode: "insensitive" } },
+    { source: { contains: sp.q } },
+    { destination: { contains: sp.q } },
   ];
 
   const trips = await prisma.trip.findMany({
